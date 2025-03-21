@@ -11,3 +11,13 @@ func (ctx *RequestCtx) Query(name string, defaultValue ...string) string {
 	}
 	return ""
 }
+
+// Param returns the named parameter value that is found in the URL path matching the current route.
+// If the named parameter cannot be found, an empty string will be returned.
+func (ctx *RequestCtx) Param(name string) string {
+	if param, ok := ctx.UserValue(name).(string); ok {
+		return param
+	}
+
+	return ""
+}
